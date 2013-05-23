@@ -1,4 +1,9 @@
-project-stand
-=============
+project-stand (项目规范)
+========================
 
-My project and coding stand.
+描述：此项目暂定为个人前端项目规范。
+
+* 指导思路
+* 目录结构设置、目录命名、文件命名
+* CSS编码规范
+* Javascript编码规范
