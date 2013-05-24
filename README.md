@@ -90,3 +90,52 @@ project-stand (项目规范)
         |- product_manage.htm
 
 ##编码规范##
+
+>     缩进：2个或4个空格
+>     空格：在操作符和操作数之间应添加空格。
+>     注释：简单明了的注释。
+>     空行：在代码块间用空行间隔。
+
+css示例
+    
+>     .page_menu {
+>          position: relative;
+>          display: block;
+>          margin: 10px;
+>          padding: 5px;     
+>     }
+>     .page_menu li {
+>         float: left;
+>         padding: 10px;
+>         border: 1px #ddd solidl;
+>     }
+
+css属性的书写顺序
+：布局和定位 块状属性 背景、字体属性
+
+javascript示例
+
+>     var page = {};
+>     
+>     page.init = function(){
+>     
+>         // init ui
+>         $('#select1').chosen();
+>         $('#input_date1').datepicker();
+>         
+>         //bind event
+>         $('#trigger_add_keyword_dialog').click(function(){
+>             $(this).text('Loading...');
+>         });
+>         
+>         // other logic
+>         $('#div_keyword_chart').highchart();
+>         
+>     }
+>     
+>     page.init();
+
+
+
+
+
