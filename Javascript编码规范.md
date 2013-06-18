@@ -1,5 +1,7 @@
 JavaScript编码风格指南
 ========================
+-- from：《编写可维护的JavaScript》
+
 ##缩进##
 4个空格，避免使用制表符(Tab)。 
 
@@ -322,9 +324,144 @@ condition? method1() :  method2();
 ````
 
 ##语句##
-待补充..
+###简单语句###
+每一行最多只包含一条语句。所有简单语句都应该以分号（；）结束。
+
+```
+// 好的写法
+count++;
+a = b;
+
+// 坏的写法
+count++; a = b;
+```
+###返回语句###
+返回语句当返回一个值的时候不应当使用圆括号包裹，除非在某些情况下可以这么做以让返回值更容易理解。例如：
+```
+// 好的写法
+return;
+return collection.size();
+return (size > 0 ? size : defaultSize);
+```
+###复合语句（语句块）###
+- 括起来的语句较外部代码应当一个层级。
+- 开始的大括号应当在复合语句所在行的末尾，结束大括号应当独占一行。
+- 当语句是控制结构的一部分时，诸如if或者for语句，所有语句都需要用大括号括起来，也包括单个语句。这个约定使得我们更方便地添加语句而不用担心忘记加括号而引起bug。
+- 像if一样的语句开始的关键词，其后应该紧跟一个空格，起始大括号应当在空格之后。
+
+绝不允许在**if语句**中省略花括号。
+```
+// 好的写法
+if (condition) {
+    statements;
+} else if (condition) {
+    statements;
+} else {
+    statements;
+}
+
+// 不好的写法
+if(condition) 
+    doSomething();
+```
+
+**for语句**
+
+for类型的语句初始化部分不应当有变量声明。
+```
+// 好的写法
+var i,
+    len;
+for ( i = 0, len = 10; i < len；i++) {
+    // 代码
+}
+
+var item;
+for (item in object) {
+   // code
+}
+
+// 不好的写法
+for(var i=0,len=10; i<10;i++){
+}
+for (var prop in object) {
+}
+```
+
+**While语句**
+```
+while (condition) {
+    sattuements
+}
+```
+
+**do语句**
+```
+do {
+    statements;
+} while (condition);
+```
+**Switch语句**
+switch下的每一个case都应当保持一个缩进。除第一个外包括default在内的每一个case都应当在之前保持一个空行。
+每一组语句，除了default外，都应当以break,return,throw结尾，或者用一行注释表示跳过。
+```
+swich (value) {
+    case 1:
+        /* falls throuth */
+
+    case 2:
+        doSomething();
+		break;
+
+	default:
+		statements;
+}
+```
+如果一个switch语句不包含default，应当用一行注释代替。
+```
+swich (value) {
+    case 1:
+        /* falls throuth */
+
+    case 2:
+        doSomething();
+		break;
+
+	// 没有default
+}
+```
+**try语句**
+```
+try {
+    statements
+} catch (variable) {
+    statements
+} finally {
+    statements
+}
+```
 ##留白##
-需要补充..
+在逻辑相关的代码之间添加空行可以提高代码的可读性。
+
+**两行空行**仅限在如下情况下使用。
+
+* 在不同的源代码文件之间。
+* 在类和接口定义之间
+
+**单行空行**仅限在如下情况中使用。
+
+* 方法之间。
+* 方法中局部变量和第一行语句之间。
+* 多行或单行注释之间
+* 方法中逻辑代码块之间以提高代码的可读性。
+
+**空格**应当在如下情况中使用。
+
+* 关键词后跟括号的情况应当使用空格隔开。
+* 参数列表中逗号这后应当保留一个空格。
+* 所有的除了点（.）之外的二元运算符，其操作数都应当用空格隔开。单目运算符的操作数之间不应该用空白隔开，诸如一元头号，递增（++），递减（--）。
+* for语句中的表达式之间应当用空格隔开。
+
 ##需要避免的##
 - 切勿使用像String一类原始包装类创建新的对象。
 - 避免使用eval()。
